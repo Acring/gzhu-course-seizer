@@ -2,7 +2,7 @@
 
 >  本脚本只做学习使用, 不做商业用途
 
-- version: 1.0.0
+- version: 1.0.1
 - author: acring
 - 简介:
 
