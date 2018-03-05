@@ -66,7 +66,8 @@ class Seizer(object):
 
         page = 1
         while not self.end_of_page(page_turner) and num_lesson == -1:
-            page_turner = self.turn_page(page_turner)
+
+            page_turner = self.turn_page(page_turner, page)
             num_lesson = self.get_whole_teacher_by_name(page_turner)
             page += 1
 
@@ -127,7 +128,6 @@ class Seizer(object):
         try:
             logging.info("{}:进入全校选课页面".format(self.process_name))
             res = self.session.get(self.whole_url, timeout=self._timeout)
-            logging.debug(self.whole_url)
             self.check_error(res)
             if re.findall(r'name="__EVENTTARGET" value="(.*?)"', res.text):
                 return res
@@ -384,10 +384,12 @@ class Seizer(object):
         :param res: 页面HTML
         :return: True or False
         """
+        logging.debug("end of page")
         inf = BeautifulSoup(res.text, "html.parser")
         current_page = inf.select("#dpkcmcGrid_lblCurrentPage")[0].text
         total_page = inf.select("#dpkcmcGrid_lblTotalPages")[0].text
         if current_page == total_page:
+            logging.debug("已经是最后一页")
             return True
         return False
 
