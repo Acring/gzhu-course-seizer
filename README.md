@@ -1,6 +1,6 @@
 # 广大抢课脚本
 
->  本脚本只做学习使用, 不做商业用途
+>  本脚本只做学习使用, 禁止用作商业用途
 
 - version: 1.0.1
 - author: acring
@@ -10,7 +10,11 @@
 
 - usage:
 
-1. 点开run.py, 按提示修改上面的学号,密码,目标老师等信息
+1. 安装python3
+2. 安装第三方库
+   1. `pip install requests`
+   2. `pip install beautifulsoup4`
+3. 点开run.py, 按提示修改上面的学号,密码,目标老师等信息
 
 ```python
 data = {
